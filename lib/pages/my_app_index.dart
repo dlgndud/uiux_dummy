@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uiux_dummy/pages/demo_design_page.dart';
+import 'package:uiux_dummy/pages/expandable_letter.dart';
+import 'package:uiux_dummy/pages/slidable_cards.dart';
 
 class MyAppIndex extends StatefulWidget {
   String? title;
+
   MyAppIndex({Key? key, this.title}) : super(key: key);
 
   @override
@@ -26,7 +29,17 @@ class _MyAppIndexState extends State<MyAppIndex> {
                 onPressed: () {
                   Get.to(() => DemoDesignPage());
                 },
-                child: Text('Demo Design'))
+                child: const Text('Demo Design')),
+            TextButton(
+                onPressed: () {
+                  Get.to(() => SlidableCards());
+                },
+                child: const Text('slidable card')),
+            TextButton(
+                onPressed: () {
+                  Get.to(() => const ExpandableLetter());
+                },
+                child: const Text('Expandable Letter'))
           ],
         ),
       ),
