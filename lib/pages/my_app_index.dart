@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:uiux_dummy/pages/demo_design_page.dart';
 import 'package:uiux_dummy/pages/expandable_letter.dart';
 import 'package:uiux_dummy/pages/slidable_cards.dart';
+import 'package:uiux_dummy/pages/table_calendar.dart';
 
 class MyAppIndex extends StatefulWidget {
   String? title;
@@ -39,7 +40,10 @@ class _MyAppIndexState extends State<MyAppIndex> {
                 onPressed: () {
                   Get.to(() => const ExpandableLetter());
                 },
-                child: const Text('Expandable Letter'))
+                child: const Text('Expandable Letter')),
+            TextButton(onPressed: (){
+              Get.to(()=>TableCalendar());
+            }, child: const Text('table calendar'))
           ],
         ),
       ),
