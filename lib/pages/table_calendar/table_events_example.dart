@@ -30,7 +30,6 @@ class _TableEventsExampleState extends State<TableEventsExample> {
     _selectedEvents = ValueNotifier(_getEventsForDay(_selectedDay!));
 
     eventPrint();
-
   }
 
   void eventPrint() {
