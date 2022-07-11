@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uiux_dummy/pages/home_screen/constant.dart';
 import 'package:uiux_dummy/pages/home_screen/widgets/my_header.dart';
 import 'package:uiux_dummy/pages/home_screen/widgets/counter.dart';
+import 'package:uiux_dummy/pages/home_screen/widgets/star2book_member_header.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         controller: controller,
         child: Column(
           children: <Widget>[
-            MyHeader(
+            Star2BookMemberHeader(
               image: "assets/icons/Drcorona.svg",
               textTop: "All you need",
               textBottom: "is stay at home.",
