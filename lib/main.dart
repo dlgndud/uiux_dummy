@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uiux_dummy/pages/my_app_index.dart';
+import 'package:uiux_dummy/pages/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +18,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyAppIndex(title: 'Flutter Demo Home Page')
+      initialRoute: "/",
+      home: MyAppIndex(title: 'Flutter Demo Home Page'),
+      getPages: [
+        // GetPage(name: "/", page: () => const SplashScreen()), // 최초 실행
+        // GetPage(
+        //     name: "/index",
+        //     page: () => MyAppIndex(),
+        //     transition: Transition.native)
+      ],
     );
   }
 }
-

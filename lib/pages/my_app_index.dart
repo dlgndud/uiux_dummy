@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:uiux_dummy/pages/banner/banner_design.dart';
 import 'package:uiux_dummy/pages/demo_design_page.dart';
 import 'package:uiux_dummy/pages/expandable_letter.dart';
 import 'package:uiux_dummy/pages/home_screen/home_screen.dart';
@@ -58,7 +59,12 @@ class _MyAppIndexState extends State<MyAppIndex> {
                   onPressed: () {
                     Get.to(() => HomeScreen());
                   },
-                  child: Text('home screen'))
+                  child: Text('home screen')),
+              TextButton(
+                  onPressed: () {
+                    Get.to(() => BannerDesign());
+                  },
+                  child: Text('banner index'))
             ],
           ),
         ),
