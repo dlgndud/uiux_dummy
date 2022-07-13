@@ -46,10 +46,11 @@ class _TransformWidgetState extends State<TransformWidget> {
                 )),
             Transform.scale(
                 scale: 0.5,
+                origin: Offset(-20, 30),
                 child: Container(
                   height: 100.0,
                   width: 100.0,
-                  color: Colors.blue,
+                  color: Colors.black,
                 )),
             Transform.scale(
                 scale: 1.2,
@@ -84,7 +85,8 @@ class _TransformWidgetState extends State<TransformWidget> {
           children: [
             Icon(Icons.add),
             Transform.scale(
-              origin: Offset(50.0, 50.0),
+              scale: 1.0,
+              origin: Offset(30.0, 30.0),
               child: Container(
                 height: 100.0,
                 width: 100.0,
