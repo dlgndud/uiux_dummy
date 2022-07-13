@@ -72,10 +72,11 @@ class _MovieHomeState extends State<MovieHome> {
                       ),
                     ),
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 30),
+                      padding: const EdgeInsets.symmetric(vertical: 30),
                       child: Text(
                         '$index',
-                        style: TextStyle(color: Colors.white, fontSize: 100),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 100),
                       ),
                       decoration:
                           BoxDecoration(color: Colors.black.withOpacity(0.6)),
