@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       home: MyAppIndex(title: 'Flutter Demo Home Page'),
       getPages: [
-        // GetPage(name: "/", page: () => const SplashScreen()), // 최초 실행
-        // GetPage(
-        //     name: "/index",
-        //     page: () => MyAppIndex(),
-        //     transition: Transition.native)
+        GetPage(name: "/", page: () => const SplashScreen()), // 최초 실행
+        GetPage(
+            name: "/index",
+            page: () => MyAppIndex(),
+            transition: Transition.native)
       ],
     );
   }
