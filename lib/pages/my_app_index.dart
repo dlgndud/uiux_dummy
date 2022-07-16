@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:uiux_dummy/pages/demo_design_page.dart';
 import 'package:uiux_dummy/pages/expandable_letter.dart';
 import 'package:uiux_dummy/pages/home_screen/home_screen.dart';
+import 'package:uiux_dummy/pages/movie/movie_home.dart';
 import 'package:uiux_dummy/pages/slidable_cards.dart';
 import 'package:uiux_dummy/pages/table_calendar.dart';
+import 'package:uiux_dummy/pages/tutorial/transform_widget.dart';
 import 'package:uiux_dummy/pages/tutorial/value_notifier.dart';
 
 class MyAppIndex extends StatefulWidget {
@@ -49,16 +51,31 @@ class _MyAppIndexState extends State<MyAppIndex> {
                     Get.to(() => TableCalendar());
                   },
                   child: const Text('table calendar')),
-              TextButton(
-                  onPressed: () {
-                    Get.to(() => ValueNotifierTutorial());
-                  },
-                  child: Text('value notifier tutorial')),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        Get.to(() => TransformWidget());
+                      },
+                      child: Text('transform tutorial')),
+                  TextButton(
+                      onPressed: () {
+                        Get.to(() => ValueNotifierTutorial());
+                      },
+                      child: Text('value notifier tutorial')),
+                ],
+              ),
               TextButton(
                   onPressed: () {
                     Get.to(() => HomeScreen());
                   },
-                  child: Text('home screen'))
+                  child: Text('home screen')),
+              TextButton(
+                  onPressed: () {
+                    Get.to(() => MovieHome());
+                  },
+                  child: Text('movie select'))
             ],
           ),
         ),
