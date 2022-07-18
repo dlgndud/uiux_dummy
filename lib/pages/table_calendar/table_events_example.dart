@@ -17,25 +17,26 @@ class _TableEventsExampleState extends State<TableEventsExample> {
   RangeSelectionMode _rangeSelectionMode = RangeSelectionMode
       .toggledOff; // Can be toggled on/off by longpressing a date
 
-  DateTime _focusedDay = DateTime.now(); // 현재일자
-  DateTime? _selectedDay;
-  DateTime? _rangeStart;
-  DateTime? _rangeEnd;
+  final _now = DateTime.now();
+  late DateTime _focusedDay;
+  late DateTime? _selectedDay;
 
   @override
   void initState() {
     super.initState();
 
+    _focusedDay = DateTime(_now.year, _now.month, _now.day); // 현재일자
+
     _selectedDay = _focusedDay;
+    print('init _selectedDay $_selectedDay');
     _selectedEvents = ValueNotifier(_getEventsForDay(_selectedDay!));
 
-    eventPrint();
-  }
-
-  void eventPrint() {
+    // EventSource 출력
     kEvents.forEach((key, value) {
-      print('$key, $value');
+      print('[KEY] $key, [VALUE] $value');
     });
+
+    //kEvents.toString();
   }
 
   @override
@@ -63,12 +64,13 @@ class _TableEventsExampleState extends State<TableEventsExample> {
       setState(() {
         _selectedDay = selectedDay;
         _focusedDay = focusedDay;
-        _rangeStart = null; // Important to clean those
-        _rangeEnd = null;
+
         _rangeSelectionMode = RangeSelectionMode.toggledOff;
       });
-      print('_onDaySelected!!! ${selectedDay}');
+      print('not match!!! $_selectedDay, $selectedDay');
       _selectedEvents.value = _getEventsForDay(selectedDay);
+    } else {
+      print('match!!! $_selectedDay, $selectedDay');
     }
   }
 
@@ -76,8 +78,6 @@ class _TableEventsExampleState extends State<TableEventsExample> {
     setState(() {
       _selectedDay = null;
       _focusedDay = focusedDay;
-      _rangeStart = start;
-      _rangeEnd = end;
       _rangeSelectionMode = RangeSelectionMode.toggledOn;
     });
 
@@ -95,7 +95,11 @@ class _TableEventsExampleState extends State<TableEventsExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('도서등록'),
+        title: const Text(
+          '독서노트',
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.yellow,
       ),
       body: Column(
         children: [
@@ -104,14 +108,13 @@ class _TableEventsExampleState extends State<TableEventsExample> {
             lastDay: kLastDay,
             focusedDay: _focusedDay,
             selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-            rangeStartDay: _rangeStart,
-            rangeEndDay: _rangeEnd,
+            //rangeStartDay: _rangeStart,
+            //rangeEndDay: _rangeEnd,
             calendarFormat: _calendarFormat,
-            rangeSelectionMode: _rangeSelectionMode,
+            //rangeSelectionMode: _rangeSelectionMode,
             eventLoader: _getEventsForDay,
             startingDayOfWeek: StartingDayOfWeek.monday,
-            calendarStyle: CalendarStyle(
-              // Use `CalendarStyle` to customize the UI
+            calendarStyle: const CalendarStyle(
               outsideDaysVisible: false,
             ),
             onDaySelected: _onDaySelected,

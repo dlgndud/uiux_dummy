@@ -17,7 +17,7 @@ class _BannerDesignState extends State<BannerDesign> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               width: size.width,
               height: 100,
               child: const Text('이웃 별님의 서재를 방문해요'),
@@ -46,10 +46,10 @@ class _BannerDesignState extends State<BannerDesign> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               width: size.width,
               height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,
@@ -60,10 +60,10 @@ class _BannerDesignState extends State<BannerDesign> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               width: size.width,
               height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,

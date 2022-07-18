@@ -19,21 +19,22 @@ class Event {
 /// Using a [LinkedHashMap] is highly recommended if you decide to use a map.
 /// 이벤트를 등록한 순서대로 출력하기 위해 map 보다는 linkedhashmap이 더 유리
 final kEvents = LinkedHashMap<DateTime, List<Event>>(
-  equals: isSameDay,
-  hashCode: getHashCode,
+  // equals: isSameDay,
+  // hashCode: getHashCode,
 )..addAll(_kEventSource);
 
-final _kEventSource = Map.fromIterable(List.generate(50, (index) => index),
-    key: (item) => DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5),
-    value: (item) => List.generate(
-        item % 4 + 1, (index) => Event('Event $item | ${index + 1}')))
-  ..addAll({
-    kToday: [
-      Event('Today\'s Event 1'),
-      Event('Today\'s Event 2'),
-      Event('Today\'s Event 3'),
-    ],
-  });
+// final _kEventSource = { for (var item in List.generate(50, (index) => index)) DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5) : List.generate(
+//         item % 4 + 1, (index) => Event('Event $item | ${index + 1}')) }
+//   ..addAll({
+//     kToday: [
+//       Event('Today\'s Event 1'),
+//       Event('Today\'s Event 2'),
+//       Event('Today\'s Event 3'),
+//     ],
+//   });
+
+DateTime _now = DateTime.now();
+LinkedHashMap<DateTime, List<Event>> _kEventSource = {DateTime(_now.year, _now.month, _now.day):[Event('Today Event 1')]} as LinkedHashMap<DateTime, List<Event>>;
 
 int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;
