@@ -27,10 +27,10 @@ class _Star2BookMemberHeaderState extends State<Star2BookMemberHeader> {
     return ClipPath(
       clipper: MyClipper(),
       child: Container(
-        padding: EdgeInsets.only(left: 40, top: 50, right: 20),
+        padding: const EdgeInsets.only(left: 40, top: 50, right: 20),
         height: 350,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
