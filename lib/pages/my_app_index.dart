@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:uiux_dummy/pages/animation/container_transition.dart';
+import 'package:uiux_dummy/pages/animation/container_transition_custom.dart';
+import 'package:uiux_dummy/pages/animation/page_animation.dart';
 import 'package:uiux_dummy/pages/demo_design_page.dart';
 import 'package:uiux_dummy/pages/expandable_letter.dart';
 import 'package:uiux_dummy/pages/home_screen/home_screen.dart';
@@ -86,7 +89,21 @@ class _MyAppIndexState extends State<MyAppIndex> {
                   onPressed: () {
                     Get.to(() => MovieHome());
                   },
-                  child: const Text('movie select'))
+                  child: const Text('movie select')),
+              TextButton(
+                  onPressed: () {
+                    //Get.to(() => PageAnimationDemo());
+                    //Get.to(() => OpenContainerTransformDemo());
+                    Get.to(() => OpenContainerTransformCustomDemo());
+                  },
+                  child: const Text('page transition custom')),
+              TextButton(
+                  onPressed: () {
+                    //Get.to(() => PageAnimationDemo());
+                    //Get.to(() => OpenContainerTransformDemo());
+                    Get.to(() => OpenContainerTransformCustomDemo());
+                  },
+                  child: const Text('page transition'))
             ],
           ),
         ),
