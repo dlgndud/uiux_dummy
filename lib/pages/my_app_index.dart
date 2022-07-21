@@ -7,9 +7,11 @@ import 'package:uiux_dummy/pages/demo_design_page.dart';
 import 'package:uiux_dummy/pages/expandable_letter.dart';
 import 'package:uiux_dummy/pages/home_screen/home_screen.dart';
 import 'package:uiux_dummy/pages/list_design/item_list.dart';
+import 'package:uiux_dummy/pages/list_design/star2book_itemlist.dart';
 import 'package:uiux_dummy/pages/movie/movie_home.dart';
 import 'package:uiux_dummy/pages/slidable_cards.dart';
 import 'package:uiux_dummy/pages/table_calendar.dart';
+import 'package:uiux_dummy/pages/tutorial/sliver_widget.dart';
 import 'package:uiux_dummy/pages/tutorial/transform_widget.dart';
 import 'package:uiux_dummy/pages/tutorial/value_notifier.dart';
 
@@ -65,20 +67,28 @@ class _MyAppIndexState extends State<MyAppIndex> {
                     Get.to(() => const TableCalendar());
                   },
                   child: const Text('table calendar')),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        Get.to(() => const TransformWidget());
-                      },
-                      child: const Text('transform tutorial')),
-                  TextButton(
-                      onPressed: () {
-                        Get.to(() => const ValueNotifierTutorial());
-                      },
-                      child: const Text('value notifier tutorial')),
-                ],
+              Container(
+                color: Colors.black12,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Get.to(() => const TransformWidget());
+                        },
+                        child: const Text('transform tutorial')),
+                    TextButton(
+                        onPressed: () {
+                          Get.to(() => const ValueNotifierTutorial());
+                        },
+                        child: const Text('value notifier tutorial')),
+                    TextButton(
+                        onPressed: () {
+                          Get.to(() => const SliverTutorial());
+                        },
+                        child: const Text('sliver widget tutorial')),
+                  ],
+                ),
               ),
               TextButton(
                   onPressed: () {
@@ -92,18 +102,19 @@ class _MyAppIndexState extends State<MyAppIndex> {
                   child: const Text('movie select')),
               TextButton(
                   onPressed: () {
-                    //Get.to(() => PageAnimationDemo());
-                    //Get.to(() => OpenContainerTransformDemo());
                     Get.to(() => OpenContainerTransformCustomDemo());
                   },
                   child: const Text('page transition custom')),
               TextButton(
                   onPressed: () {
-                    //Get.to(() => PageAnimationDemo());
-                    //Get.to(() => OpenContainerTransformDemo());
                     Get.to(() => OpenContainerTransformCustomDemo());
                   },
-                  child: const Text('page transition'))
+                  child: const Text('page transition')),
+              TextButton(
+                  onPressed: () {
+                    Get.to(() => const Star2BookItemList());
+                  },
+                  child: const Text('star2book item list')),
             ],
           ),
         ),
