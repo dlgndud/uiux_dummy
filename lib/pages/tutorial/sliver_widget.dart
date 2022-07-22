@@ -9,43 +9,44 @@ class SliverTutorial extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _SliverTutorialState extends State<SliverTutorial> {
-  final _controller = ScrollController();
-  double _offset = 0;
-  double _opacity = 1;
+  final _scrollController = ScrollController();
+  double _opacity = .0;
+  double _offsetOpacity = .0;
 
   @override
   void initState() {
-    _controller.addListener(onScroll);
-    super.initState();
-  }
+    _scrollController.addListener(() {
+      setState(() {
+        // min-max scale!
+        // 테스트 진행 중... 2022-07-22
+        _offsetOpacity = (_scrollController.offset * 2 -
+                _scrollController.position.maxScrollExtent) /
+            (_scrollController.position.minScrollExtent -
+                _scrollController.position.maxScrollExtent);
 
-  void onScroll() {
-    setState(() {
-      _offset = (_controller.hasClients) ? _controller.offset : 0;
-      if (100 > _offset && _offset > 1) {
-        setState(() {
-          _opacity = _offset / 100;
-        });
-      } else if (_offset > 100 && _opacity != 1) {
-        _opacity = 1;
-      } else if (_offset < 0 && _opacity != 0) {
-        _opacity = 0;
-      }
+        _opacity = _offsetOpacity;
+        if (_opacity > 1) {
+          _opacity = 1;
+        } else if (_opacity < 0) {
+          _opacity = 0;
+        }
+        print('_opacity $_opacity, _offsetOpacity $_offsetOpacity');
+      });
     });
-    print("opacity is: $_opacity, offset is : $_offset");
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(
-      controller: _controller,
+      controller: _scrollController,
       slivers: [
         SliverOpacity(
-          opacity: _opacity,
-          sliver: SliverAppBar(
+          opacity: 1,
+          sliver: const SliverAppBar(
             pinned: true,
-            expandedHeight: 250.0,
+            expandedHeight: 150.0,
             flexibleSpace: FlexibleSpaceBar(
               title: Text('SliverAppBar'),
               background: FlutterLogo(),
@@ -55,7 +56,7 @@ class _SliverTutorialState extends State<SliverTutorial> {
         SliverToBoxAdapter(
           child: Column(
             children: List.generate(
-                10,
+                20,
                 (index) => Card(
                       child: ListTile(
                         title: Text('$index'),
