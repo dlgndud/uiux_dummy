@@ -42,9 +42,9 @@ class _SliverTutorialState extends State<SliverTutorial> {
         body: CustomScrollView(
       controller: _scrollController,
       slivers: [
-        SliverOpacity(
+        const SliverOpacity(
           opacity: 1,
-          sliver: const SliverAppBar(
+          sliver: SliverAppBar(
             pinned: true,
             expandedHeight: 150.0,
             flexibleSpace: FlexibleSpaceBar(
