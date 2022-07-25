@@ -69,8 +69,7 @@ class _TransformWidgetState extends State<TransformWidget> {
               ),
             ),
             Transform(
-              transform: Matrix4.skewY(0.3)
-                ..rotateZ(3.14 / 12.0),
+              transform: Matrix4.skewY(0.3)..rotateZ(3.14 / 12.0),
               origin: Offset(50.0, 50.0),
               child: Container(
                 height: 100.0,
@@ -83,21 +82,20 @@ class _TransformWidgetState extends State<TransformWidget> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.call), label: 'Calls'),
+          const BottomNavigationBarItem(icon: Icon(Icons.call), label: 'Calls'),
           BottomNavigationBarItem(
               icon: Stack(
                 children: [
-                  Icon(Icons.camera),
+                  const Icon(Icons.camera),
                   Container(
                     height: 100,
-
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         shape: BoxShape.circle, color: Colors.red),
                   )
                 ],
               ),
               label: 'Camera'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat')
+          const BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat')
         ],
       ),
     );

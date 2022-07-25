@@ -1,6 +1,6 @@
 // Copyright 2019 Aleksander Woźniak
 // SPDX-License-Identifier: Apache-2.0
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -14,20 +14,18 @@ class TableEventsExample extends StatefulWidget {
 class _TableEventsExampleState extends State<TableEventsExample> {
   late final ValueNotifier<List<Event>> _selectedEvents;
   CalendarFormat _calendarFormat = CalendarFormat.month;
-  RangeSelectionMode _rangeSelectionMode = RangeSelectionMode
-      .toggledOff; // Can be toggled on/off by longpressing a date
 
   final _now = DateTime.now();
-  late DateTime _focusedDay;
-  late DateTime? _selectedDay;
+  late DateTime _focusedDay; // 마우스 포커스
+  late DateTime? _selectedDay; // 현재일
 
   @override
   void initState() {
     super.initState();
 
     _focusedDay = DateTime(_now.year, _now.month, _now.day); // 현재일자
-
     _selectedDay = _focusedDay;
+
     print('init _selectedDay $_selectedDay');
     _selectedEvents = ValueNotifier(_getEventsForDay(_selectedDay!));
 
@@ -50,44 +48,20 @@ class _TableEventsExampleState extends State<TableEventsExample> {
     return kEvents[day] ?? [];
   }
 
-  List<Event> _getEventsForRange(DateTime start, DateTime end) {
-    // Implementation example
-    final days = daysInRange(start, end);
-
-    return [
-      for (final d in days) ..._getEventsForDay(d),
-    ];
-  }
-
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
+    bool _issmame = isSameDay(_selectedDay, selectedDay);
+    print(
+        '_selectedDay:$_selectedDay, selectedDay:$selectedDay, _issmae:$_issmame');
     if (!isSameDay(_selectedDay, selectedDay)) {
       setState(() {
         _selectedDay = selectedDay;
         _focusedDay = focusedDay;
-
-        _rangeSelectionMode = RangeSelectionMode.toggledOff;
       });
-      print('not match!!! $_selectedDay, $selectedDay');
-      _selectedEvents.value = _getEventsForDay(selectedDay);
-    } else {
-      print('match!!! $_selectedDay, $selectedDay');
-    }
-  }
 
-  void _onRangeSelected(DateTime? start, DateTime? end, DateTime focusedDay) {
-    setState(() {
-      _selectedDay = null;
-      _focusedDay = focusedDay;
-      _rangeSelectionMode = RangeSelectionMode.toggledOn;
-    });
-
-    // `start` or `end` could be null
-    if (start != null && end != null) {
-      _selectedEvents.value = _getEventsForRange(start, end);
-    } else if (start != null) {
-      _selectedEvents.value = _getEventsForDay(start);
-    } else if (end != null) {
-      _selectedEvents.value = _getEventsForDay(end);
+      DateTime _tmp = DateTime(
+          selectedDay.year, selectedDay.month, selectedDay.day); // 현재일자
+      _selectedEvents.value = _getEventsForDay(_tmp);
+      print(_selectedEvents.value);
     }
   }
 
@@ -96,7 +70,7 @@ class _TableEventsExampleState extends State<TableEventsExample> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          '독서노트',
+          'Calendar',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.yellow,
@@ -118,7 +92,6 @@ class _TableEventsExampleState extends State<TableEventsExample> {
               outsideDaysVisible: false,
             ),
             onDaySelected: _onDaySelected,
-            onRangeSelected: _onRangeSelected,
             onFormatChanged: (format) {
               if (_calendarFormat != format) {
                 setState(() {
