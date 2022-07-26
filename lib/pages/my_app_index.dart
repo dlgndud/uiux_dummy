@@ -10,6 +10,7 @@ import 'package:uiux_dummy/pages/list_design/item_list.dart';
 import 'package:uiux_dummy/pages/list_design/star2book_itemlist.dart';
 import 'package:uiux_dummy/pages/movie/movie_home.dart';
 import 'package:uiux_dummy/pages/slidable_cards.dart';
+import 'package:uiux_dummy/pages/tabbar/tab_index_tutorial.dart';
 import 'package:uiux_dummy/pages/table_calendar.dart';
 import 'package:uiux_dummy/pages/tutorial/sliver_widget.dart';
 import 'package:uiux_dummy/pages/tutorial/transform_widget.dart';
@@ -115,6 +116,11 @@ class _MyAppIndexState extends State<MyAppIndex> {
                     Get.to(() => const Star2BookItemList());
                   },
                   child: const Text('star2book item list')),
+              TextButton(
+                  onPressed: () {
+                    Get.to(() => const TabIndexTutorial());
+                  },
+                  child: const Text('tab index tutorial')),
             ],
           ),
         ),
