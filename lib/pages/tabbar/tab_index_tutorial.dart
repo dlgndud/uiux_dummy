@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:uiux_dummy/pages/models/restaurant.dart';
-import 'package:uiux_dummy/pages/tabbar/food_item.dart';
 import 'package:uiux_dummy/pages/tabbar/restaurant_info.dart';
 import 'package:uiux_dummy/pages/tabbar/tab_app_bar.dart';
 import 'package:uiux_dummy/pages/tabbar/tab_list.dart';
@@ -17,7 +16,6 @@ class TabIndexTutorial extends StatefulWidget {
 class _TabIndexTutorialState extends State<TabIndexTutorial> {
   late PageController _pageController;
   late Restaurant? _restaurant;
-  late Function? _callback;
 
   int _selectedIndex = 0;
 
@@ -27,12 +25,6 @@ class _TabIndexTutorialState extends State<TabIndexTutorial> {
     _restaurant = Restaurant.generateRestaurant();
     super.initState();
   }
-
-  // void callback(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
